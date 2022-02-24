@@ -20,9 +20,9 @@ export const LinksList = ({ links }) => {
         <tbody>
         { links.map((link, index) => {
             return (
-                <tr key={link._id}>
+                <tr key={link._id} className="linkCard">
                     <td>{index + 1}</td>
-                    <td>{link.from}</td>
+                    <td style={{maxWidth: 300}}>{link.from}</td>
                     <td>{link.to}</td>
                     <td>
                         <Link to={`/detail/${link._id}`}>Открыть</Link>
