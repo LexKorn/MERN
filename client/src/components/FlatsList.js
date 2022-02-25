@@ -7,35 +7,29 @@ export const FlatsList = ({ flats }) => {
     }
 
     return (
-        <table>
-        <thead>
-          <tr>
-              <th>N</th>
-              <th>Количество комнат</th>
-              <th>Площадь, м2</th>
-              <th>Цена</th>
-              <th>Описание</th>
-              <th>Дата публикации</th>
-          </tr>
-        </thead>
-
-        <tbody>
-        { flats.map((flat, index) => {
+        <>
+        { flats.map((flat) => {
             return (
-                <>
-                    <tr key={flat._id} className="flatCard">
-                        <td>{index + 1}</td>
-                        <td className="room">Количество комнат: {flat.room}</td>
-                        <td className="area">Площадь: {flat.area}м2</td>
-                        <td className="price">Цена: {flat.price}$</td>
-                        <td className="description">{flat.description}</td>
-                        <td className="date">Дата публикации: {new Date(flat.date).toLocaleDateString()}</td>
-                    </tr>
-                    <br></br>
-                </>                
+                <ul>
+                    <li key={flat._id} className="flatItem">
+                        <div className="flatPlan">
+                            <img src="http://indizajn.ru/wp-content/uploads/2017/09/Planirovka-kvartiryi-8.jpg" />
+                        </div>
+                        <div className="flatInfo">
+                            <h5>{flat.room}-комнатная квартира, {flat.area}м2</h5>  
+                            <p>{flat.description}</p>      
+                            <p>Опубликовано: {new Date(flat.date).toLocaleDateString()}</p>
+                        </div>          
+                        <div className="flatPrice">
+                            <h4>{flat.price}$</h4>
+                            <br/><br/>
+                            <button>в Избранное</button>
+                            <button>к Сравнению</button>
+                        </div>                                                                                  
+                    </li>
+                </ul>                
             )           
-        })}          
-        </tbody>
-      </table>
+        })} 
+        </>                
     )
 }
